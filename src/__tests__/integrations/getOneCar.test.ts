@@ -3,7 +3,7 @@ import supertest from "supertest";
 import { app } from "../../app";
 import { CarMockWrongBody, carMock1 } from "../__mocks__/car.mock";
 
-describe("integration test: Create a car ",()=>{
+describe("integration test: Get a car ",()=>{
     const request = supertest(app);
     const endpoint = "/cars";
 
@@ -11,7 +11,7 @@ describe("integration test: Create a car ",()=>{
         await prisma.car.deleteMany();
       });
 
-    test("Should be able to create a car successfully", async()=>{
+    test("Should be able to get a car successfully", async()=>{
 
        const newCar = await prisma.car.create({data:carMock1});
 
@@ -31,18 +31,16 @@ describe("integration test: Create a car ",()=>{
 
     });
 
-    // test("Should return an error if create a car with wrong body", async()=>{
-    //     const newCar = await request.post(endpoint).send(CarMockWrongBody);    
+    test("Should return an error if get a car with invalid ID", async()=>{
+        const newCar = prisma.car.create({data:carMock1})   
               
-    //     expect(newCar.status).toBe(400);        
+        const fakeId = "31483a29-be37-4r9c-9222-c017ecd88260";
+        const response = await request.get(`${endpoint}/${fakeId}`);
+   
+        expect(response.status).toBe(404);        
 
-    // });
+    });
 
-    // test("Should return an error if create a car with empty body", async()=>{
-    //     const newCar = await request.post(endpoint).send({});    
-              
-    //     expect(newCar.status).toBe(400);        
-
-    // });
+  
     
 });
