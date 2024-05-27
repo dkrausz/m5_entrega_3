@@ -1,0 +1,1 @@
+export { TUser,TCreateUserbody,IUserService,TreturnUserBody,TReturnLogin } from "./user.interface";

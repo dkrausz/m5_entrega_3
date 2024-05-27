@@ -7,7 +7,7 @@ type TUpdateCarBody = z.infer<typeof updateCarBodySchema>;
 
 interface ICarService{
     create(payload:TCreateCarBody):Promise<TCar>;
-    getCars():Promise<Array<TCar>>;
+    getCars(userid?:string):Promise<Array<TCar>>;
     getOneCar(id:string):Promise<TCar>;
     updateCar(id:string, payload:TUpdateCarBody):Promise<TCar>;
     deleteCar(id:string):void;

@@ -4,7 +4,8 @@ export const carMock1={
     description: "car with correct info",
     brand: "test 2.0",
     year: 1999,
-    km:104000
+    km:104000,
+    userId:""
 };
 
 export const carMock2={
@@ -12,7 +13,8 @@ export const carMock2={
     description: "car with correct info 2",
     brand: "test 2.5",
     year: 2000,
-    km:207000
+    km:207000,
+    userId: ""
 };
 
 export const CarMockWrongBody={
@@ -20,5 +22,6 @@ export const CarMockWrongBody={
     description: "car with correct info 2",
     brand: "test 2.5",
     year: 2000,
-    km:207000
-}
+    km:207000,
+    userId: ""
+};
