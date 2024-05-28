@@ -5,7 +5,7 @@ import { container } from "tsyringe";
 import { CarService } from "../../service/car.service";
 import { userMock1 } from "../__mocks__/user.mock";
 
-const carSerice = container.resolve(CarService);
+const carService = container.resolve(CarService);
 
 describe("Unit test: update a Car", ()=>{
 
@@ -21,7 +21,7 @@ describe("Unit test: update a Car", ()=>{
 
         const newDescription={description:"This car was updated"};
 
-        const car= await carSerice.updateCar(newCar.id,newDescription);
+        const car= await carService.updateCar(newCar.id,newDescription);
         const expectedValue={
             id:expect.any(String),
             name:carMock1.name,

@@ -37,6 +37,8 @@ class UserMiddleware {
 
   public isAuth = async (req: Request, res: Response, next: NextFunction) => {
     const { authorization } = req.headers;
+    console.log("auth", authorization);
+    
     if (!authorization) {
       throw new AppError("Token is required", 401);
     }
@@ -60,10 +62,8 @@ class UserMiddleware {
 
 public isUserOwnerOfThisCar = async(req:Request,res:Response, next:NextFunction)=>{
   const {id} = res.locals.decoded;  
-  const carId = res.locals.car.userId;
-  console.log("carId",carId);
-  console.log("id",id);
-  if(id!==carId){
+  const userId = res.locals.car.userId;
+  if(id!==userId){
     throw new AppError("User must be the car owner",403);
   }
   return next();

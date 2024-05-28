@@ -5,7 +5,7 @@ import { container } from "tsyringe";
 import { CarService } from "../../service/car.service";
 import { userMock1, userMock2 } from "../__mocks__/user.mock";
 
-const carSerice = container.resolve(CarService);
+const carService = container.resolve(CarService);
 
 describe("Unit test: List all the cars", ()=>{
 
@@ -23,7 +23,7 @@ test("Should be able to get all the cars",async()=>{
     await prisma.car.create({data:carTest1});
     await prisma.car.create({data:carTest2});
     
-    const carList = await carSerice.getCars();
+    const carList = await carService.getCars();
 
     const expectedValue1={
         id:expect.any(String),

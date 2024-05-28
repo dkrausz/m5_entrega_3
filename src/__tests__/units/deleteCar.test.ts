@@ -5,7 +5,7 @@ import { container } from "tsyringe";
 import { CarService } from "../../service/car.service";
 import { userMock1 } from "../__mocks__/user.mock";
 
-const carSerice = container.resolve(CarService);
+const carService = container.resolve(CarService);
 
 describe("Unit test: Delete a Car", ()=>{
 
@@ -19,7 +19,7 @@ describe("Unit test: Delete a Car", ()=>{
         const carTest = {...carMock1,userId:newUser.id};
         const newCar = await prisma.car.create({data:carTest});
     
-        await carSerice.deleteCar(newCar.id);
+        await carService.deleteCar(newCar.id);
       
         const carList = await prisma.car.findMany();
 
