@@ -22,7 +22,8 @@ export class CarController{
             userid=res.locals.userid;
         }else{
             userid=null;
-        };                
+        };            
+                  
         const cars = await this.carService.getCars(userid);
         return res.status(200).json(cars);
     };

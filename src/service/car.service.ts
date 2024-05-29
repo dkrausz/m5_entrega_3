@@ -16,13 +16,13 @@ export class CarService implements ICarService {
   };
 
   public getCars = async (userid?:string): Promise<Array<TCar>> => {
-    let cars;
-    if(userid){
-      console.log("user existe",userid);
-      
+    let cars;    
+    
+    if(userid){             
       cars = await prisma.car.findMany({where:{userId:userid}});
 
-    }else{
+    }else{     
+      
       cars= await prisma.car.findMany();
     }
     

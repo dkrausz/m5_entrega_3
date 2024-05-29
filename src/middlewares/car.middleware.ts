@@ -1,6 +1,7 @@
 import { Response, Request, NextFunction } from "express";
 import { prisma } from "../database/prisma";
 import { AppError } from "../errors/appError";
+import { empty } from "@prisma/client/runtime/library";
 
 
 class CarMiddleware{
@@ -16,8 +17,20 @@ class CarMiddleware{
        };
 
        public validQuery = async(req:Request,res:Response,next:NextFunction)=>{
-        if(req.query.userid){        
+              
+        if(req.query.userid){ 
+            const searchId=req.query.userid
+            const user = await prisma.user.findFirst({where:{id:searchId as string}});
+                     
+            
+            if(user){               
+                          
             res.locals.userid=req.query.userid;
+            }
+            else{              
+                
+            res.locals.userId =null;
+            }
         }
                    
         return next();

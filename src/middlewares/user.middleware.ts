@@ -36,8 +36,7 @@ class UserMiddleware {
   };
 
   public isAuth = async (req: Request, res: Response, next: NextFunction) => {
-    const { authorization } = req.headers;
-    console.log("auth", authorization);
+    const { authorization } = req.headers;   
     
     if (!authorization) {
       throw new AppError("Token is required", 401);
@@ -69,6 +68,7 @@ public isUserOwnerOfThisCar = async(req:Request,res:Response, next:NextFunction)
   return next();
   
 };
+
 
 }
 
